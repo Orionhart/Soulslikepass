@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -12,6 +13,8 @@ public enum PlayerState { normal, dashing, stunned, testing, attacking }
 public enum AttackType { light, heavy }
 public class PlayerScript : MonoBehaviour
 {
+    public static PlayerScript Instance;
+    
     public delegate void DamageHandler(GameObject hitObj, float dmg);
     public static event DamageHandler Damage;
     public static void OnDamage(GameObject hitObj, float dmg) => Damage?.Invoke(hitObj, dmg);
@@ -34,8 +37,12 @@ public class PlayerScript : MonoBehaviour
     int parryLevel;
 
     float invincibleTimer = 1f;
+    float dashCost = 15f;
+    float lightAttackCost = 5f;
+    float heavyAttackCost = 12f;
     //HUD PlayerHUD;
     public Health HealthObject;
+    public Stamina StaminaObject;
     StarterAssetsInputs starterAssetsInputs;
     ThirdPersonController thirdPersonController;
     Animator animator;
@@ -43,6 +50,11 @@ public class PlayerScript : MonoBehaviour
     bool noButtons = true;
 
     AttackType currAttackType = AttackType.light;
+
+    private void Awake()
+    {
+        Instance = this;
+    }
 
     //todo: add stamina system
     private void Start()
@@ -177,6 +189,7 @@ public class PlayerScript : MonoBehaviour
             {
                 noButtons = true;
                 parrying = true;
+                StaminaObject.StopStaminaRegain();
                 SetInvincible(1f);
             }
         }
@@ -206,16 +219,17 @@ public class PlayerScript : MonoBehaviour
             starterAssetsInputs.action = false;
         }
 
-        if (starterAssetsInputs.dash)
+        if (starterAssetsInputs.dash && StaminaObject.current > dashCost)
         {
             //should have stamina cost
             state = PlayerState.dashing;
             thirdPersonController.SprintSpeed = 20f;
             thirdPersonController.MoveSpeed = 20f;
             starterAssetsInputs.dash = false;
+            StaminaObject.ModifyStamina(dashCost * -1);
         }
 
-        if (starterAssetsInputs.lightAttack)
+        if (starterAssetsInputs.lightAttack && StaminaObject.current > lightAttackCost)
         {
             state = PlayerState.attacking;
             thirdPersonController.AllowMovement(false);
@@ -223,6 +237,7 @@ public class PlayerScript : MonoBehaviour
             animator.SetTrigger("LightAttack");
             weaponAnimator.SetTrigger("LightAttack");
             starterAssetsInputs.lightAttack = false;
+            StaminaObject.ModifyStamina(lightAttackCost * -1);
         }
     }
 

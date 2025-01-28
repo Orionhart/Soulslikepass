@@ -224,27 +224,27 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2674244832364215188, guid: f27611f13de2d544d86e2d17d261c943, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0.5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2674244832364215188, guid: f27611f13de2d544d86e2d17d261c943, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0.5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2674244832364215188, guid: f27611f13de2d544d86e2d17d261c943, type: 3}
       propertyPath: m_AnchorMin.x
-      value: 0.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2674244832364215188, guid: f27611f13de2d544d86e2d17d261c943, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 0.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2674244832364215188, guid: f27611f13de2d544d86e2d17d261c943, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 300
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2674244832364215188, guid: f27611f13de2d544d86e2d17d261c943, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 300
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2674244832364215188, guid: f27611f13de2d544d86e2d17d261c943, type: 3}
       propertyPath: m_LocalPosition.x
@@ -276,11 +276,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2674244832364215188, guid: f27611f13de2d544d86e2d17d261c943, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -368.53
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2674244832364215188, guid: f27611f13de2d544d86e2d17d261c943, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 184.4
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2674244832364215188, guid: f27611f13de2d544d86e2d17d261c943, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -294,9 +294,25 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4948397656148692943, guid: f27611f13de2d544d86e2d17d261c943, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4948397656148692943, guid: f27611f13de2d544d86e2d17d261c943, type: 3}
+      propertyPath: m_RaycastTarget
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4974247289766138115, guid: f27611f13de2d544d86e2d17d261c943, type: 3}
       propertyPath: m_Name
       value: Popup
+      objectReference: {fileID: 0}
+    - target: {fileID: 5974988107799871786, guid: f27611f13de2d544d86e2d17d261c943, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7558682582803238850, guid: f27611f13de2d544d86e2d17d261c943, type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

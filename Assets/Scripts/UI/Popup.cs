@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -22,10 +23,19 @@ public class Popup : MonoBehaviour
     {
         Instance = this;
         popupParent.gameObject.SetActive(false);
+        image.enabled = false;
     }
 
     public void ShowPopup(List<PopupOption> options, Sprite sprite = null)
     {
+        if (isShowing)
+        {
+            return;
+        }
+        
+        Cursor.lockState = CursorLockMode.None;
+        image.enabled = true;
+        
         foreach (var option in options)
         {
             GameObject buttonObject = Instantiate(optionPrefab, optionParent);
@@ -44,14 +54,19 @@ public class Popup : MonoBehaviour
         {
             image.gameObject.SetActive(false);
         }
+
+        isShowing = true;
         
         popupParent.gameObject.SetActive(true);
     }
 
     public void HidePopup()
     {
+        image.enabled = false;
         isShowing = false;
         popupParent.gameObject.SetActive(false);
+
+        Cursor.lockState = CursorLockMode.Locked;
 
         foreach (var button in buttons)
         {

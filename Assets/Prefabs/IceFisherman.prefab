@@ -347,6 +347,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 721c70fffafa62b438524a6f5fd5c621, type: 3}
       insertIndex: -1
       addedObject: {fileID: 5098336873165839434}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 721c70fffafa62b438524a6f5fd5c621, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 7611380634967935784}
   m_SourcePrefab: {fileID: 100100000, guid: 721c70fffafa62b438524a6f5fd5c621, type: 3}
 --- !u!137 &281950244514982363 stripped
 SkinnedMeshRenderer:
@@ -572,9 +575,11 @@ MonoBehaviour:
   action: 0
   test: 0
   dash: 0
+  lightAttack: 0
   analogMovement: 0
   cursorLocked: 1
   cursorInputForLook: 1
+  hideCursor: 1
 --- !u!114 &4660906987252306674
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -604,7 +609,10 @@ MonoBehaviour:
   sprintSpeed: 6
   baseHealth: 100
   spawnBulletTransform: {fileID: 681399579308360019}
+  weaponAnimator: {fileID: 0}
+  currWeapon: {fileID: 0}
   HealthObject: {fileID: 5098336873165839434}
+  StaminaObject: {fileID: 7611380634967935784}
 --- !u!114 &5098336873165839434
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -645,6 +653,27 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &7611380634967935784
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3652912525004366193}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ad1399e14ebd47546863e58fab7504cc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _current: 50
+  maxStamina: 50
+  staminaRegainTimer: 0
+  staminaRegainMultiplier: 2.5
+  staminaRegainBlocked: 0
+  debugModify: 1
+  OnStaminaChanged:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!4 &4177669449706748875 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 721c70fffafa62b438524a6f5fd5c621, type: 3}
