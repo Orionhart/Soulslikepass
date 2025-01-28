@@ -17,6 +17,8 @@ namespace StarterAssets
 		public bool test;
 		public bool dash;
 		public bool lightAttack;
+		public bool heavyAttack;
+
 
 		[Header("Movement Settings")]
 		public bool analogMovement;
@@ -62,6 +64,11 @@ namespace StarterAssets
 			Debug.Log("OnLightAttack " + value);
 			LightAttackInput(value.isPressed);
 		}
+		public void OnHeavyAttack(InputValue value)
+		{
+			Debug.Log("OnHeavyAttack " + value);
+			HeavyAttackInput(value.isPressed);
+		}
 #endif
 
 
@@ -96,6 +103,10 @@ namespace StarterAssets
 		public void LightAttackInput(bool newActionState)
 		{
 			lightAttack = newActionState;
+		}
+		public void HeavyAttackInput(bool newActionState)
+		{
+			heavyAttack = newActionState;
 		}
 
 		private void OnApplicationFocus(bool hasFocus)

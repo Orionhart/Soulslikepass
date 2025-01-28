@@ -239,6 +239,16 @@ public class PlayerScript : MonoBehaviour
             starterAssetsInputs.lightAttack = false;
             StaminaObject.ModifyStamina(lightAttackCost * -1);
         }
+        if (starterAssetsInputs.heavyAttack && StaminaObject.current > heavyAttackCost)
+        {
+            state = PlayerState.attacking;
+            thirdPersonController.AllowMovement(false);
+            thirdPersonController.AllowRotate(false);
+            animator.SetTrigger("HeavyAttack");
+            weaponAnimator.SetTrigger("HeavyAttack");
+            starterAssetsInputs.heavyAttack = false;
+            StaminaObject.ModifyStamina(heavyAttackCost * -1);
+        }
     }
 
     public void EnableLightAttackHitBox()
@@ -249,6 +259,16 @@ public class PlayerScript : MonoBehaviour
     public void DisableLightAttackHitBox()
     {
         currWeapon.DisableLightAttackHitBox();
+    }
+    
+    public void EnableHeavyAttackHitBox()
+    {
+        currWeapon.EnableHeavyAttackHitBox();
+    }
+
+    public void DisableHeavyAttackHitBox()
+    {
+        currWeapon.DisableHeavyAttackHitBox();
     }
 
     // called by animation to determine when to leave the attacking state
