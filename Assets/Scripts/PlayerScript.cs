@@ -19,6 +19,10 @@ public class PlayerScript : MonoBehaviour
     public static event DamageHandler Damage;
     public static void OnDamage(GameObject hitObj, float dmg) => Damage?.Invoke(hitObj, dmg);
 
+    public static bool isPaused => Instance.paused;
+
+    public bool paused = false;
+
     [SerializeField] LayerMask mouseColliderLayerMask;
     [SerializeField] GameObject parryEffect;
     bool parrying = false;
@@ -113,6 +117,16 @@ public class PlayerScript : MonoBehaviour
 
     void Update()
     {
+        if (starterAssetsInputs.pause)
+        {
+            Pause();
+        }
+
+        if (paused)
+        {
+            return;
+        }
+        
         powerCharacterEffects[0].SetActive(parryLevel > 0);
         powerCharacterEffects[1].SetActive(parryLevel > 1);
         powerCharacterEffects[2].SetActive(parryLevel > 2);
@@ -124,6 +138,8 @@ public class PlayerScript : MonoBehaviour
             GetComponent<Health>().enabled = true;
             parrying = false;
         }
+
+        Cursor.lockState = CursorLockMode.Locked;
 
         switch (state)
         {
@@ -147,11 +163,16 @@ public class PlayerScript : MonoBehaviour
             default:
                 break;
         }
-
     }
 
     void LateUpdate()
     {
+
+        if (paused)
+        {
+            return;
+        }
+        
         HealthObject.maxHealth = baseHealth;
         //PlayerHUD.SetHP(HealthObject.current, HealthObject.maxHealth);
         switch (state)
@@ -172,6 +193,11 @@ public class PlayerScript : MonoBehaviour
                 break;
         }
     }
+
+    private void FixedUpdate()
+    {
+    }
+
     void Shoot(Vector3 aimDir, Vector3 spawnPosition, float dam)
     {
         parryLevel = 0;
@@ -183,6 +209,7 @@ public class PlayerScript : MonoBehaviour
 
     void Normal()
     {
+        
         if ((starterAssetsInputs.sprint == false) && (starterAssetsInputs.dash == false) && (starterAssetsInputs.jump == false) && (thirdPersonController.Grounded == true) && (starterAssetsInputs.move.magnitude <= 0.1f))
         {
             if ((noButtons == false) && (invincibleTimer < 0f))
@@ -282,6 +309,7 @@ public class PlayerScript : MonoBehaviour
 
     void Dash()
     {
+        
         GetComponent<Health>().enabled = true;
         thirdPersonController.Gravity = -10;
         thirdPersonController.SetRotateOnMove(true);
@@ -298,5 +326,15 @@ public class PlayerScript : MonoBehaviour
 
         if (starterAssetsInputs.action)
             starterAssetsInputs.action = false;
+    }
+    [SerializeField] GameObject pauseMenu = null;
+
+    public void Pause()
+    {
+        starterAssetsInputs.pause = false;
+        Debug.Log("Pause " + paused);
+        paused = !paused;
+        Time.timeScale = paused ? 0 : 1;
+        if(pauseMenu) pauseMenu.SetActive(paused);
     }
 }

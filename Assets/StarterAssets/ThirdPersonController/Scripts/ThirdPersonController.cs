@@ -157,6 +157,7 @@ namespace StarterAssets
 
         private void Update()
         {
+            if (PlayerScript.Instance.paused) return;
             _hasAnimator = TryGetComponent(out _animator);
 
             JumpAndGravity();
@@ -166,6 +167,7 @@ namespace StarterAssets
 
         private void LateUpdate()
         {
+            if (PlayerScript.Instance.paused) return;
             CameraRotation();
         }
 

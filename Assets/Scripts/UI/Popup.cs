@@ -32,6 +32,9 @@ public class Popup : MonoBehaviour
         {
             return;
         }
+
+        PlayerScript.Instance.paused = false;
+        PlayerScript.Instance.Pause();
         
         Cursor.lockState = CursorLockMode.None;
         image.enabled = true;
