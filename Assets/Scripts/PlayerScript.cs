@@ -124,6 +124,8 @@ public class PlayerScript : MonoBehaviour
 
         if (paused)
         {
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
             return;
         }
         
