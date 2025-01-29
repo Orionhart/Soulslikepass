@@ -9,7 +9,7 @@ using UnityEngine.InputSystem;
 using NUnit.Framework;
 
 
-public enum PlayerState { normal, dashing, stunned, testing, attacking }
+public enum PlayerState { normal, dashing, stunned, testing, attacking, resting }
 public enum AttackType { light, heavy }
 public class PlayerScript : MonoBehaviour
 {
@@ -41,16 +41,20 @@ public class PlayerScript : MonoBehaviour
     int parryLevel;
 
     float invincibleTimer = 1f;
+    float sprintCost = .5f;
     float dashCost = 15f;
     float lightAttackCost = 5f;
+    public float jumpCost = 9f;
     float heavyAttackCost = 12f;
+
+    public bool isSitting = false;
     //HUD PlayerHUD;
     public Health HealthObject;
     public Stamina StaminaObject;
-    StarterAssetsInputs starterAssetsInputs;
+    public StarterAssetsInputs starterAssetsInputs;
     ThirdPersonController thirdPersonController;
     Animator animator;
-    PlayerState state = PlayerState.normal;
+    [SerializeField] PlayerState state = PlayerState.normal;
     bool noButtons = true;
 
     AttackType currAttackType = AttackType.light;
@@ -97,6 +101,30 @@ public class PlayerScript : MonoBehaviour
             SetInvincible(1f, true);
             parryLevel = 0;
         }
+    }
+
+    public void Jumped()
+    {
+        StaminaObject.ModifyStamina(-1 * jumpCost, 1f);
+    }
+
+    public void TriggerRest()
+    {
+        animator.Play("Resting", 0);
+        state = PlayerState.resting;
+        HealthObject.ModifyHealth(HealthObject.maxHealth - HealthObject.current);
+        StaminaObject.ModifyStamina(StaminaObject.maxStamina - StaminaObject.current);
+        paused = true;
+        isSitting = true;
+        parryLevel = 0;
+    }
+
+    public void TriggerNotRest()
+    {
+        animator.Play("GetUp", 0);
+        paused = false;
+        isSitting = false;
+        state = PlayerState.normal;
     }
 
     public void Dead()
@@ -162,7 +190,9 @@ public class PlayerScript : MonoBehaviour
                 thirdPersonController.AllowMovement(false);
                 thirdPersonController.SetRotateOnMove(false);
                 break;
-            default:
+            case PlayerState.resting:
+                thirdPersonController.AllowMovement(false);
+                thirdPersonController.SetRotateOnMove(false);
                 break;
         }
     }
@@ -225,6 +255,13 @@ public class PlayerScript : MonoBehaviour
         else
             noButtons = false;
 
+
+        if (starterAssetsInputs.sprint)
+        {
+            StaminaObject.ModifyStamina(Time.deltaTime * dashCost * -1f, .1f);
+        }
+        
+        
         invincibleTimer -= Time.deltaTime;
 
         if (invincibleTimer < 0f)
@@ -264,7 +301,7 @@ public class PlayerScript : MonoBehaviour
             thirdPersonController.AllowMovement(false);
             thirdPersonController.AllowRotate(false);
             animator.SetTrigger("LightAttack");
-            weaponAnimator.SetTrigger("LightAttack");
+            if(weaponAnimator) weaponAnimator.SetTrigger("LightAttack");
             starterAssetsInputs.lightAttack = false;
             StaminaObject.ModifyStamina(lightAttackCost * -1);
         }
@@ -274,7 +311,7 @@ public class PlayerScript : MonoBehaviour
             thirdPersonController.AllowMovement(false);
             thirdPersonController.AllowRotate(false);
             animator.SetTrigger("HeavyAttack");
-            weaponAnimator.SetTrigger("HeavyAttack");
+            if(weaponAnimator) weaponAnimator.SetTrigger("HeavyAttack");
             starterAssetsInputs.heavyAttack = false;
             StaminaObject.ModifyStamina(heavyAttackCost * -1);
         }
@@ -334,8 +371,22 @@ public class PlayerScript : MonoBehaviour
     public void Pause()
     {
         starterAssetsInputs.pause = false;
+        if (CheckpointUI.Instance.isOpen)
+        {
+            return;
+        }
         Debug.Log("Pause " + paused);
         paused = !paused;
+        if (paused)
+        {
+            thirdPersonController.AllowMovement(false);
+            thirdPersonController.SetRotateOnMove(false);
+        }
+        else
+        {
+            thirdPersonController.AllowMovement(true);
+            thirdPersonController.SetRotateOnMove(true);
+        }
         Time.timeScale = paused ? 0 : 1;
         if(pauseMenu) pauseMenu.SetActive(paused);
     }

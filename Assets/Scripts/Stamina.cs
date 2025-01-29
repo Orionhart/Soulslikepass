@@ -74,6 +74,11 @@ public class Stamina : MonoBehaviour
         {
             current = maxStamina;
         }
+
+        if (current < 0)
+        {
+            current = 0;
+        }
         OnStaminaChanged?.Invoke(current, maxStamina);
     }
 

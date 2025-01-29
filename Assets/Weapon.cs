@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Weapon : MonoBehaviour
@@ -11,14 +9,17 @@ public class Weapon : MonoBehaviour
     {
         lightAttackCollider.enabled = true;
     }
+    
     public void DisableLightAttackHitBox()
     {
         lightAttackCollider.enabled = false;
     }
+    
     public void EnableHeavyAttackHitBox()
     {
         lightAttackCollider.enabled = true;
     }
+    
     public void DisableHeavyAttackHitBox()
     {
         lightAttackCollider.enabled = false;
