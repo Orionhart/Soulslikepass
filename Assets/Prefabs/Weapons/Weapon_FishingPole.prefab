@@ -472,12 +472,6 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: b0dc1d92d7d32f54887897c9f4f8f842, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 2637490661988535059}
-    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: b0dc1d92d7d32f54887897c9f4f8f842, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 7778335886283529668}
-    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: b0dc1d92d7d32f54887897c9f4f8f842, type: 3}
-      insertIndex: -1
       addedObject: {fileID: 7370112231563105950}
   m_SourcePrefab: {fileID: 100100000, guid: b0dc1d92d7d32f54887897c9f4f8f842, type: 3}
 --- !u!4 &56860021140887251 stripped
@@ -490,42 +484,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: b0dc1d92d7d32f54887897c9f4f8f842, type: 3}
   m_PrefabInstance: {fileID: 522620546269802808}
   m_PrefabAsset: {fileID: 0}
---- !u!95 &2637490661988535059
-Animator:
-  serializedVersion: 7
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 829173947012893801}
-  m_Enabled: 0
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 7d6fdcf701cfa524aa34c890b578da85, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_AnimatePhysics: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
---- !u!114 &7778335886283529668
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 829173947012893801}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c36baa482bfb06143954654afa479d42, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  lightAttackCollider: {fileID: 8122453548137672432}
-  heavyAttackCollider: {fileID: 3848919395234389781}
 --- !u!82 &7370112231563105950
 AudioSource:
   m_ObjectHideFlags: 0

@@ -119,11 +119,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1 &31312694 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3652912525004366193, guid: 9a8f37aa8835e8a43a0dbf83bffec9d8, type: 3}
-  m_PrefabInstance: {fileID: 7955987418835815796}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &36525122
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5618,11 +5613,6 @@ ReflectionProbe:
   m_UseOcclusionCulling: 1
   m_Importance: 1
   m_CustomBakedTexture: {fileID: 0}
---- !u!65 &609968300 stripped
-BoxCollider:
-  m_CorrespondingSourceObject: {fileID: 6377373159534184338, guid: 9a8f37aa8835e8a43a0dbf83bffec9d8, type: 3}
-  m_PrefabInstance: {fileID: 7955987418835815796}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &665595249 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8604583432295994024, guid: 936508bfbc4dc6d4eb47d98f6ce89f3c, type: 3}
@@ -6430,20 +6420,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4177669449706748875, guid: 9a8f37aa8835e8a43a0dbf83bffec9d8, type: 3}
   m_PrefabInstance: {fileID: 7955987418835815796}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1100554494
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 31312694}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c36baa482bfb06143954654afa479d42, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  lightAttackCollider: {fileID: 609968300}
-  heavyAttackCollider: {fileID: 1351645792}
 --- !u!1001 &1132418975
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6841,11 +6817,6 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 1543203970}
   m_SourcePrefab: {fileID: 100100000, guid: f6d148d888ffbf54b9afe9936dfaec1f, type: 3}
---- !u!65 &1351645792 stripped
-BoxCollider:
-  m_CorrespondingSourceObject: {fileID: 2112787055572465271, guid: 9a8f37aa8835e8a43a0dbf83bffec9d8, type: 3}
-  m_PrefabInstance: {fileID: 7955987418835815796}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1355059098
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8351,10 +8322,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 3521229508982051687, guid: 9a8f37aa8835e8a43a0dbf83bffec9d8, type: 3}
-      propertyPath: m_Intensity
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 3652912525004366193, guid: 9a8f37aa8835e8a43a0dbf83bffec9d8, type: 3}
       propertyPath: m_Name
       value: Player_IceFisherman
@@ -8403,14 +8370,6 @@ PrefabInstance:
       propertyPath: pauseMenu
       value: 
       objectReference: {fileID: 4033523748427861782}
-    - target: {fileID: 4660906987252306674, guid: 9a8f37aa8835e8a43a0dbf83bffec9d8, type: 3}
-      propertyPath: currWeapon
-      value: 
-      objectReference: {fileID: 1100554494}
-    - target: {fileID: 4660906987252306674, guid: 9a8f37aa8835e8a43a0dbf83bffec9d8, type: 3}
-      propertyPath: weaponAnimator
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 7064539043081597910, guid: 9a8f37aa8835e8a43a0dbf83bffec9d8, type: 3}
       propertyPath: m_ActionEvents.Array.data[0].m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -8427,19 +8386,10 @@ PrefabInstance:
       propertyPath: m_ActionEvents.Array.data[3].m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1762682262}
-    - target: {fileID: 8366222918431170505, guid: 9a8f37aa8835e8a43a0dbf83bffec9d8, type: 3}
-      propertyPath: m_Intensity
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 4884725717266625702, guid: 9a8f37aa8835e8a43a0dbf83bffec9d8, type: 3}
-    - {fileID: 910295187056665201, guid: 9a8f37aa8835e8a43a0dbf83bffec9d8, type: 3}
+    m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 3652912525004366193, guid: 9a8f37aa8835e8a43a0dbf83bffec9d8, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1100554494}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9a8f37aa8835e8a43a0dbf83bffec9d8, type: 3}
 --- !u!1001 &8345070700268369567
 PrefabInstance:
