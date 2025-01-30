@@ -84,6 +84,7 @@ public class Health : MonoBehaviour
         }
         else
             OnDeath.Invoke();
+        
     }
 
     #endregion

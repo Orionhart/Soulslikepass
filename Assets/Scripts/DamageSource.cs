@@ -11,6 +11,7 @@ public class DamageSource : MonoBehaviour
     #region----- VARIABLES -----
 
     [Tooltip("Damage to deal. NOTE: negative values will heal")]
+    public WeaponElement element;
     public float dmg = 1;
     public List<string> tagsToDamage = new();
     [SerializeField] bool DestroyOnHit;
