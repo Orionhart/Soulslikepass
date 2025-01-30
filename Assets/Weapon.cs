@@ -1,4 +1,6 @@
+using StarterAssets;
 using UnityEngine;
+using UnityEngine.Playables;
 
 public enum WeaponElement { None, Electric, Fire, Ice}
 
@@ -7,6 +9,9 @@ public class Weapon : MonoBehaviour
     [SerializeField] private WeaponElement element = WeaponElement.None;
     
     [SerializeField] private FishingHook hook;
+
+    [SerializeField] private float maxCastDistanceLight = 5f;
+    [SerializeField] private float maxCastDistanceHeavy = 15f;
     
     [SerializeField] private Collider lightAttackCollider;
     [SerializeField] private Collider heavyAttackCollider;
@@ -41,6 +46,26 @@ public class Weapon : MonoBehaviour
         
         lightDamageSource.element = element;
         heavyDamageSource.element = element;
+    }
+
+    public void OnLightAttack()
+    {
+        hook.Unparent();
+        
+        if (hook.transform.parent == null)
+        {
+            hook.CastTo(Vector3.ClampMagnitude(PlayerScript.Instance.transform.forward, maxCastDistanceLight));
+        }
+    }
+
+    public void OnHeavyAttack()
+    {
+        hook.Unparent();
+        
+        if (hook.transform.parent == null)
+        {
+            hook.CastTo(Vector3.ClampMagnitude(PlayerScript.Instance.transform.forward, maxCastDistanceHeavy));
+        }
     }
 
     public void EnableLightAttackHitBox()

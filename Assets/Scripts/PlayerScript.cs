@@ -41,7 +41,7 @@ public class PlayerScript : MonoBehaviour
     int parryLevel;
 
     float invincibleTimer = 1f;
-    float sprintCost = .5f;
+    float sprintCost = 0f;
     float dashCost = 15f;
     float lightAttackCost = 5f;
     public float jumpCost = 9f;
@@ -258,7 +258,7 @@ public class PlayerScript : MonoBehaviour
 
         if (starterAssetsInputs.sprint)
         {
-            StaminaObject.ModifyStamina(Time.deltaTime * dashCost * -1f, .1f);
+            StaminaObject.StopStaminaRegain();
         }
         
         
@@ -294,10 +294,15 @@ public class PlayerScript : MonoBehaviour
             starterAssetsInputs.dash = false;
             StaminaObject.ModifyStamina(dashCost * -1);
         }
+        else if(starterAssetsInputs.dash)
+        {
+            starterAssetsInputs.dash = false;
+        }
 
         if (starterAssetsInputs.lightAttack && StaminaObject.current > lightAttackCost)
         {
             state = PlayerState.attacking;
+            currWeapon.OnLightAttack();
             thirdPersonController.AllowMovement(false);
             thirdPersonController.AllowRotate(false);
             animator.SetTrigger("LightAttack");
@@ -305,15 +310,24 @@ public class PlayerScript : MonoBehaviour
             starterAssetsInputs.lightAttack = false;
             StaminaObject.ModifyStamina(lightAttackCost * -1);
         }
+        else if(starterAssetsInputs.lightAttack)
+        {
+            starterAssetsInputs.lightAttack = false;
+        }
         if (starterAssetsInputs.heavyAttack && StaminaObject.current > heavyAttackCost)
         {
             state = PlayerState.attacking;
+            currWeapon.OnHeavyAttack();
             thirdPersonController.AllowMovement(false);
             thirdPersonController.AllowRotate(false);
             animator.SetTrigger("HeavyAttack");
             if(weaponAnimator) weaponAnimator.SetTrigger("HeavyAttack");
             starterAssetsInputs.heavyAttack = false;
             StaminaObject.ModifyStamina(heavyAttackCost * -1);
+        }
+        else if(starterAssetsInputs.heavyAttack)
+        {
+            starterAssetsInputs.heavyAttack = false;
         }
     }
 
