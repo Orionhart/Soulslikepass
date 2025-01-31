@@ -29,13 +29,18 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _CrackDepth: 0.721
+    - _CrackDepth: 0.415
     - _CrackIntensity: 1
-    - _CrackScale: 1
-    - _FresnelPower: 5.4
-    - _Smoothness: 0.914
+    - _CrackScale: 1.29
+    - _FresnelPower: 7.26
+    - _Metallic: 1
+    - _Reflectivity: 0.585
+    - _Roughness: 0.024
+    - _Smoothness: 0.852
+    - _Threshold: 0.983
     m_Colors:
-    - _BaseColor: {r: 0.39999998, g: 0.8, b: 1, a: 1}
+    - _BaseColor: {r: 0.4009434, g: 0.80031466, b: 1, a: 1}
+    - _CrackColor: {r: 1, g: 1, b: 1, a: 1}
     - _FresnelColor: {r: 0.7, g: 0.9, b: 1, a: 1}
   m_BuildTextureStacks: []
   m_AllowLocking: 1
