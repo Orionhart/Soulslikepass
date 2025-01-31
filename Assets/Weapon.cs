@@ -2,11 +2,11 @@ using StarterAssets;
 using UnityEngine;
 using UnityEngine.Playables;
 
-public enum WeaponElement { None, Electric, Fire, Ice}
+public enum ElementalAffinity { None, Electric, Fire, Ice}
 
 public class Weapon : MonoBehaviour
 {
-    [SerializeField] private WeaponElement element = WeaponElement.None;
+    [SerializeField] private ElementalAffinity element = ElementalAffinity.None;
     
     [SerializeField] private FishingHook hook;
 
@@ -23,7 +23,7 @@ public class Weapon : MonoBehaviour
     [SerializeField] private GameObject fireParticleObject;
     [SerializeField] private GameObject electricParticleObject;
 
-    public void ChangeElement(WeaponElement element)
+    public void ChangeElement(ElementalAffinity element)
     {
         this.element = element;
         
@@ -33,13 +33,13 @@ public class Weapon : MonoBehaviour
 
         switch (element)
         {
-            case WeaponElement.Electric:
+            case ElementalAffinity.Electric:
                 electricParticleObject.SetActive(true);
                 break;
-            case WeaponElement.Fire:
+            case ElementalAffinity.Fire:
                 fireParticleObject.SetActive(true);
                 break;
-            case WeaponElement.Ice:
+            case ElementalAffinity.Ice:
                 iceParticleObject.SetActive(true);
                 break;
         }

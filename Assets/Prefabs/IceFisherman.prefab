@@ -595,7 +595,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 721c70fffafa62b438524a6f5fd5c621, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 90.7
+      value: 58.598198
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 721c70fffafa62b438524a6f5fd5c621, type: 3}
       propertyPath: m_LocalPosition.y
@@ -603,11 +603,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 721c70fffafa62b438524a6f5fd5c621, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 97.3
+      value: 138.44366
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 721c70fffafa62b438524a6f5fd5c621, type: 3}
       propertyPath: m_LocalRotation.w
-      value: -0.00000035762784
+      value: -0.48305
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 721c70fffafa62b438524a6f5fd5c621, type: 3}
       propertyPath: m_LocalRotation.x
@@ -615,7 +615,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 721c70fffafa62b438524a6f5fd5c621, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -1
+      value: -0.8755928
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 721c70fffafa62b438524a6f5fd5c621, type: 3}
       propertyPath: m_LocalRotation.z
@@ -627,7 +627,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 721c70fffafa62b438524a6f5fd5c621, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: -180
+      value: -237.76999
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 721c70fffafa62b438524a6f5fd5c621, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
@@ -981,6 +981,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a416cdbdc8ac3f43bf4b116b91a4d48, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  myElement: 3
   _current: 100
   maxHealth: 100
   indestructable: 0
@@ -1042,8 +1043,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c36baa482bfb06143954654afa479d42, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  element: 0
+  element: 3
   hook: {fileID: 6788159636831853397}
+  maxCastDistanceLight: 5
+  maxCastDistanceHeavy: 15
   lightAttackCollider: {fileID: 6377373159534184338}
   heavyAttackCollider: {fileID: 2112787055572465271}
   lightDamageSource: {fileID: 5673898296674870981}
@@ -1074,6 +1077,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 7059911215254785515}
     m_Modifications:
+    - target: {fileID: 1069481530377212610, guid: f07eff07e5b6ad54b8c43203f230f326, type: 3}
+      propertyPath: myElement
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 1164328930233416281, guid: f07eff07e5b6ad54b8c43203f230f326, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.0001
@@ -1154,7 +1161,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: FishingHook
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 6612638218220408198, guid: f07eff07e5b6ad54b8c43203f230f326, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 1164328930233416281, guid: f07eff07e5b6ad54b8c43203f230f326, type: 3}
@@ -1199,6 +1207,10 @@ PrefabInstance:
     - target: {fileID: 2439141850953940366, guid: fbb134cea125c6548929974e7194a32a, type: 3}
       propertyPath: m_Name
       value: Ice
+      objectReference: {fileID: 0}
+    - target: {fileID: 2439141850953940366, guid: fbb134cea125c6548929974e7194a32a, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4128675696885440781, guid: fbb134cea125c6548929974e7194a32a, type: 3}
       propertyPath: m_LocalPosition.x

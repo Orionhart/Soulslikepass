@@ -11,7 +11,7 @@ public class DamageSource : MonoBehaviour
     #region----- VARIABLES -----
 
     [Tooltip("Damage to deal. NOTE: negative values will heal")]
-    public WeaponElement element;
+    public ElementalAffinity element;
     public float dmg = 1;
     public List<string> tagsToDamage = new();
     [SerializeField] bool DestroyOnHit;
@@ -26,7 +26,7 @@ public class DamageSource : MonoBehaviour
         if (tagsToDamage.Contains(other.tag))
         {
             Debug.Log($"{name} -> {other.name}");
-            Health.OnDamage(other.gameObject, dmg);
+            Health.OnDamage(other.gameObject, dmg, element);
             PlayerScript.OnDamage(other.gameObject, dmg);
             if (DestroyOnHit)
             {
