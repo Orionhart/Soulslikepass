@@ -75,7 +75,7 @@ Shader "Unlit/ice crack test"
 
                 float cracks = 1.0 - worleyNoise(uv, _CrackScale);
                 float mask = step(_Threshold, cracks);
-                v.vertex.y -= mask * _CrackDepth
+                v.vertex.y -= mask * _CrackDepth;
 
                 o.vertex = UnityObjectToClipPos(v.vertex);
                 o.uv = v.uv;
