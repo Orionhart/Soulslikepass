@@ -7,7 +7,13 @@ public class FishingHook : MonoBehaviour
     
     public void CastTo(Vector3 position)
     {
-        rigidBody.DOMove(position, 1f);
+        rigidBody.AddRelativeForce(position, ForceMode.Impulse);
+    }
+
+    public void Unparent()
+    {
+        transform.parent = null;
+        rigidBody.isKinematic = false;
     }
     
     private void OnCollisionEnter(Collision other)
@@ -23,8 +29,8 @@ public class FishingHook : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Enemy"))
         {
-            transform.parent = null;
-            rigidBody.isKinematic = false;
+            //transform.parent = null;
+            //rigidBody.isKinematic = false;
         }
     }
 }
